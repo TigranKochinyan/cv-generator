@@ -1,6 +1,7 @@
-import { FC } from "react";
+import { FC, useRef, useState } from "react";
 
 export const CustomTextArea: FC = () => {
+
   return (
     <div className="px-5 mt-5">
       <label

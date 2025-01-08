@@ -1,6 +1,6 @@
 import { createContext, FC, PropsWithChildren, useState } from "react";
 
-type MainInfo = {
+export type MainInfo = {
   jobTitle?: string;
   firstName: string;
   lastName: string;

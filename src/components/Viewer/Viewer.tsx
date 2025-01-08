@@ -1,8 +1,8 @@
 import { FC, useContext } from "react";
-// import { PDFViewer } from "@react-pdf/renderer";
+import { PDFViewer } from "@react-pdf/renderer";
 
 import styles from "./styles.module.scss";
-// import { MyDocument } from "../Document/Document";
+import { MyDocument } from "../Document/Document";
 import { UserInfoContext } from "../../context/UserInfoContext";
 
 export const Viewer: FC = () => {
@@ -10,11 +10,15 @@ export const Viewer: FC = () => {
 
   console.log('userInfo::', userInfo);
 
+  if(!userInfo) {
+    return null;
+  }
+
   return (
     <div className={styles.root}>
-      {/* <PDFViewer className={styles.viewer}>
-       <MyDocument />
-      </PDFViewer> */}
+      <PDFViewer className={styles.viewer}>
+       <MyDocument mainInfo={userInfo.mainInfo} />
+      </PDFViewer>
     </div>
   );
 };
