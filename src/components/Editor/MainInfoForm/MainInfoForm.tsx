@@ -1,8 +1,8 @@
 import { FC, useContext } from "react";
-import { MainInfo, UserInfoContext } from "../../../context/UserInfoContext";
+import { MainInfoType, UserInfoContext } from "../../../context/UserInfoContext";
 import { useForm, SubmitHandler } from "react-hook-form";
 
-type IFormInput = MainInfo;
+type IFormInput = MainInfoType;
 
 export const MainInfoForm: FC = () => {
   const userInfo = useContext(UserInfoContext);

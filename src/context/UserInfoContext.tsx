@@ -1,6 +1,6 @@
 import { createContext, FC, PropsWithChildren, useState } from "react";
 
-export type MainInfo = {
+export type MainInfoType = {
   jobTitle?: string;
   firstName: string;
   lastName: string;
@@ -16,11 +16,11 @@ type AdditionalInfo = {
 };
 
 export type UserInfoContextType = {
-  mainInfo: MainInfo;
+  mainInfo: MainInfoType;
   linkedinProfileLink?: string;
   githubProfileLink?: string;
   skills: string[];
-  changeMainInfo: (data: MainInfo) => void;
+  changeMainInfo: (data: MainInfoType) => void;
   changeAdditionalInfo: (data: AdditionalInfo) => void;
 };
 
@@ -29,7 +29,7 @@ export const UserInfoContext = createContext<UserInfoContextType | null>(null);
 export const UserInfoContextProvider: FC<PropsWithChildren> = ({
   children,
 }) => {
-  const [mainInfo, setMainInfo] = useState<MainInfo>({
+  const [mainInfo, setMainInfo] = useState<MainInfoType>({
     city: "",
     country: "",
     email: "",
@@ -42,7 +42,7 @@ export const UserInfoContextProvider: FC<PropsWithChildren> = ({
   const [githubProfileLink, setGithubProfileLink] = useState("");
   const [skills, setSkills] = useState<string[]>([]);
 
-  const changeMainInfo = (data: MainInfo) => {
+  const changeMainInfo = (data: MainInfoType) => {
     setMainInfo(data);
   };
 

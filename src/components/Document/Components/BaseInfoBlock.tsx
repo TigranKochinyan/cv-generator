@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   },
   blockTitle: {
     color: "#999999",
-    borderBottom: "2px solid #999999",
+    borderBottom: "0.5px solid #999999",
     marginBottom: 8,
   },
   blockSubTitle: {
