@@ -116,40 +116,42 @@ export const MainInfo: FC<MainInfoProps> = ({
   phone,
   specializations,
   workSchedule,
-}) => (
-  <View>
-    <View style={styles.heading}>
-      <Text style={styles.name}>
-        {surName} {name}
-      </Text>
-      <Text style={styles.age}>Male, born on {birthDate}</Text>
+}) => {
+  return (
+    <View>
+      <View style={styles.heading}>
+        <Text style={styles.name}>
+          {surName} {name}
+        </Text>
+        <Text style={styles.age}>Male, born on {birthDate}</Text>
 
-      <View style={styles.contacts}>
-        <Text style={styles.contactText}>{phone}</Text>
-        <Text style={styles.contactText}>{email}</Text>
+        <View style={styles.contacts}>
+          <Text style={styles.contactText}>{phone}</Text>
+          <Text style={styles.contactText}>{email}</Text>
+        </View>
+
+        <View style={styles.contacts}>
+          <Text style={styles.contactText}>Location: {location}</Text>
+          <Text style={styles.contactText}>Citizenship: {country}</Text>
+          <Text style={styles.contactText}>{businessDetails}</Text>
+        </View>
       </View>
 
-      <View style={styles.contacts}>
-        <Text style={styles.contactText}>Location: {location}</Text>
-        <Text style={styles.contactText}>Citizenship: {country}</Text>
-        <Text style={styles.contactText}>{businessDetails}</Text>
+      <View style={styles.positionBox}>
+        <Text style={styles.title}>Desired position</Text>
+        <View style={styles.ml}>
+          <Text style={styles.subTitle}>{desiredPosition}</Text>
+          <Text style={styles.specInfoText}>
+            Specializations: {specializations}
+          </Text>
+          <Text style={styles.specInfoText} wrap>
+            Busyness: {busyness}
+          </Text>
+          <Text style={styles.specInfoText} wrap>
+            Work schedule: {workSchedule}
+          </Text>
+        </View>
       </View>
     </View>
-
-    <View style={styles.positionBox}>
-      <Text style={styles.title}>Desired position</Text>
-      <View style={styles.ml}>
-        <Text style={styles.subTitle}>{desiredPosition}</Text>
-        <Text style={styles.specInfoText}>
-          Specializations: {specializations}
-        </Text>
-        <Text style={styles.specInfoText} wrap>
-          Busyness: {busyness}
-        </Text>
-        <Text style={styles.specInfoText} wrap>
-          Work schedule: {workSchedule}
-        </Text>
-      </View>
-    </View>
-  </View>
-);
+  );
+};

@@ -8,16 +8,18 @@ import { UserInfoContext } from "../../context/UserInfoContext";
 export const Viewer: FC = () => {
   const userInfo = useContext(UserInfoContext);
 
-  console.log('userInfo::', userInfo);
-
-  if(!userInfo) {
+  if (!userInfo) {
     return null;
   }
 
   return (
     <div className={styles.root}>
       <PDFViewer className={styles.viewer}>
-       <MyDocument mainInfo={userInfo.mainInfo} />
+        <MyDocument
+          mainInfo={userInfo.mainInfo}
+          educations={userInfo.educations}
+          additionalInfo={userInfo.additionalInfo}
+        />
       </PDFViewer>
     </div>
   );

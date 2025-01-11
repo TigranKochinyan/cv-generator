@@ -1,21 +1,28 @@
-import { FC, useContext } from "react";
-import { MainInfoType, UserInfoContext } from "../../../context/UserInfoContext";
+import { FC, useContext, useEffect } from "react";
+import { UserInfoContext } from "../../../context/UserInfoContext";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { MainInfoType } from "../../../common/types";
 
 type IFormInput = MainInfoType;
 
 export const MainInfoForm: FC = () => {
   const userInfo = useContext(UserInfoContext);
 
-  const { register, handleSubmit } = useForm<IFormInput>();
+  const { register, handleSubmit, reset } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     userInfo?.changeMainInfo(data);
-    
   };
+
+  useEffect(() => {
+    reset(userInfo?.mainInfo);
+  }, []);
 
   return (
     <div className="p-4">
-      <form onSubmit={handleSubmit(onSubmit)} className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6"
+      >
         <div className="sm:col-span-3">
           <label
             htmlFor="first-name"
@@ -90,6 +97,41 @@ export const MainInfoForm: FC = () => {
 
         <div className="sm:col-span-3">
           <label
+            htmlFor="birthDate"
+            className="block text-sm/6 font-medium text-gray-900"
+          >
+            Birth Date
+          </label>
+          <div className="mt-2">
+            <input
+              id="birthDate"
+              {...register("birthDate")}
+              type="text"
+              autoComplete="bday-day"
+              className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+            />
+          </div>
+        </div>
+
+        <div className="sm:col-span-3">
+          <label
+            htmlFor="desiredPosition"
+            className="block text-sm/6 font-medium text-gray-900"
+          >
+            Desired Position
+          </label>
+          <div className="mt-2">
+            <input
+              id="desiredPosition"
+              {...register("desiredPosition")}
+              type="text"
+              className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+            />
+          </div>
+        </div>
+
+        <div className="sm:col-span-3">
+          <label
             htmlFor="country"
             className="block text-sm/6 font-medium text-gray-900"
           >
@@ -123,8 +165,47 @@ export const MainInfoForm: FC = () => {
             />
           </div>
         </div>
-        
-        <button type="submit" className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Add</button>
+
+        <div className="sm:col-span-3">
+          <label
+            htmlFor="businessDetails"
+            className="block text-sm/6 font-medium text-gray-900"
+          >
+            Business Details
+          </label>
+          <div className="mt-2">
+            <input
+              id="businessDetails"
+              {...register("businessDetails")}
+              type="text"
+              className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+            />
+          </div>
+        </div>
+
+        <div className="sm:col-span-3">
+          <label
+            htmlFor="busyness"
+            className="block text-sm/6 font-medium text-gray-900"
+          >
+            Busyness
+          </label>
+          <div className="mt-2">
+            <input
+              id="busyness"
+              {...register("busyness")}
+              type="text"
+              className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+            />
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+          Add
+        </button>
       </form>
     </div>
   );

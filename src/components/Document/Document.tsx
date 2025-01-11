@@ -1,11 +1,15 @@
 import { FC } from "react";
 import { Page, Document, StyleSheet } from "@react-pdf/renderer";
-import { MainInfoType } from "../../context/UserInfoContext";
 import { Skills } from "./Components/Skills";
-import { BaseInfoBlock } from "./Components/BaseInfoBlock";
 import { Experience } from "./Components/Experience";
-import { ExperienceType } from "../../common/types";
+import {
+  EducationType,
+  ExperienceType,
+  MainInfoType,
+} from "../../common/types";
 import { MainInfo } from "./Components/MainInfo";
+import { EducationsBlock } from "./Components/EducationsBlock";
+import { AdditionalInfoBlock } from "./Components/AdditionalInfoBlock";
 
 // Create styles
 const styles = StyleSheet.create({
@@ -46,8 +50,6 @@ const skillsTest = [
   "jQuery",
 ];
 
-
-
 const experiences: ExperienceType[] = [
   {
     position: "React Developer",
@@ -84,8 +86,6 @@ const experiences: ExperienceType[] = [
   },
 ];
 
-
-
 const infoBlockOne = {
   blockTitle: "Education",
   subTitle: `Bachelor's degree`,
@@ -107,44 +107,53 @@ const infoBlockTwo = {
 
 type DocumentProps = {
   title?: string;
-  mainInfo?: MainInfoType;
+  mainInfo: MainInfoType;
+  educations?: EducationType[];
+  additionalInfo?: string;
 };
 
 // Create Document Component
-export const MyDocument: FC<DocumentProps> = ({ title, mainInfo }) => (
-  <Document>
-    <Page size="A4" style={styles.page}>
-      <MainInfo
-        surName="Kochinyan"
-        name="Tigran"
-        birthDate="January 24, 1999"
-        city="Yerevan"
-        phone="+374 (93) 550242"
-        location="Armenia, Yerevan"
-        email="tigrankochinyan24@gmail.com"
-        country="Armenia"
-        busyness="Ready to move, ready for business trips"
-        desiredPosition="Frontend developer"
-        businessDetails="full-time, part-time, project work"
-        specializations="Frontend Developer, Software engineer, Full-stack Developer"
-        workSchedule="full-time, flexible schedule, remote work"
-      />
+export const MyDocument: FC<DocumentProps> = ({
+  title,
+  mainInfo,
+  educations,
+  additionalInfo = "",
+}) => {
+  return (
+    <Document>
+      <Page size="A4" style={styles.page}>
+        <MainInfo
+          surName={mainInfo.lastName}
+          name={mainInfo.firstName}
+          birthDate={mainInfo.birthDate ?? ""}
+          city={mainInfo.city ?? ""}
+          phone={mainInfo.phoneNumber}
+          location={mainInfo.country ?? ""}
+          email={mainInfo.email}
+          country={mainInfo.country ?? ""}
+          busyness={mainInfo.busyness ?? ""}
+          desiredPosition={mainInfo.desiredPosition}
+          businessDetails={mainInfo.businessDetails ?? ""}
+          specializations="Frontend Developer, Software engineer, Full-stack Developer"
+          workSchedule="full-time, flexible schedule, remote work"
+        />
 
-      <Experience experiences={experiences} experienceTime="4 years" />
+        <Experience experiences={experiences} experienceTime="4 years" />
 
-      <BaseInfoBlock {...infoBlockOne} />
+        <EducationsBlock educations={educations || []} />
 
-      <Skills
-        title="Skills"
-        languages={[
-          { language: "Armenian", text: "— Native" },
-          { language: "English", text: "— B1" },
-          { language: "Russian", text: "— C2" },
-        ]}
-        skills={skillsTest}
-      />
+        <Skills
+          title="Skills"
+          languages={[
+            { language: "Armenian", text: "— Native" },
+            { language: "English", text: "— B1" },
+            { language: "Russian", text: "— C2" },
+          ]}
+          skills={skillsTest}
+        />
 
-      <BaseInfoBlock {...infoBlockTwo} />
-    </Page>
-  </Document>
-);
+        <AdditionalInfoBlock additionalInfo={additionalInfo} />
+      </Page>
+    </Document>
+  );
+};
