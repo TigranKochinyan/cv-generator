@@ -3,6 +3,7 @@ import { Page, Document, StyleSheet } from "@react-pdf/renderer";
 import { Skills } from "./Components/Skills";
 import { Experience } from "./Components/Experience";
 import {
+  DesiredPositionType,
   EducationType,
   ExperienceType,
   MainInfoType,
@@ -10,6 +11,7 @@ import {
 import { MainInfo } from "./Components/MainInfo";
 import { EducationsBlock } from "./Components/EducationsBlock";
 import { AdditionalInfoBlock } from "./Components/AdditionalInfoBlock";
+import { DesiredPositionBlock } from "./Components/DesiredPositionBlock";
 
 // Create styles
 const styles = StyleSheet.create({
@@ -110,6 +112,7 @@ type DocumentProps = {
   mainInfo: MainInfoType;
   educations?: EducationType[];
   additionalInfo?: string;
+  desiredPositionInfo: DesiredPositionType;
 };
 
 // Create Document Component
@@ -118,6 +121,7 @@ export const MyDocument: FC<DocumentProps> = ({
   mainInfo,
   educations,
   additionalInfo = "",
+  desiredPositionInfo,
 }) => {
   return (
     <Document>
@@ -131,11 +135,14 @@ export const MyDocument: FC<DocumentProps> = ({
           location={mainInfo.country ?? ""}
           email={mainInfo.email}
           country={mainInfo.country ?? ""}
-          busyness={mainInfo.busyness ?? ""}
-          desiredPosition={mainInfo.desiredPosition}
           businessDetails={mainInfo.businessDetails ?? ""}
-          specializations="Frontend Developer, Software engineer, Full-stack Developer"
-          workSchedule="full-time, flexible schedule, remote work"
+        />
+
+        <DesiredPositionBlock
+          desiredPosition={desiredPositionInfo.desiredPosition}
+          busyness={desiredPositionInfo.busyness}
+          specializations={desiredPositionInfo.specializations}
+          workSchedule={desiredPositionInfo.workSchedule}
         />
 
         <Experience experiences={experiences} experienceTime="4 years" />

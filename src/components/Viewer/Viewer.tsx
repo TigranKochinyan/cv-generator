@@ -19,6 +19,7 @@ export const Viewer: FC = () => {
           mainInfo={userInfo.mainInfo}
           educations={userInfo.educations}
           additionalInfo={userInfo.additionalInfo}
+          desiredPositionInfo={userInfo.desiredPositionInfo}
         />
       </PDFViewer>
     </div>

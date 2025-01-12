@@ -20,8 +20,6 @@ export const AdditionalInfoForm: FC<AdditionalInfoFormProps> = ({
   const { register, handleSubmit, reset } = useForm<IFormInput>();
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log("change:::submit Additional info");
-
     userInfo?.changeAdditionalInfo(data.text);
   };
 

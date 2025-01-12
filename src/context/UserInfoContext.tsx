@@ -1,5 +1,9 @@
 import { createContext, FC, PropsWithChildren, useState } from "react";
-import { EducationType, MainInfoType } from "../common/types";
+import {
+  DesiredPositionType,
+  EducationType,
+  MainInfoType,
+} from "../common/types";
 import { generateId } from "../common/utils";
 
 export type UserInfoContextType = {
@@ -9,10 +13,12 @@ export type UserInfoContextType = {
   skills: string[];
   educations: EducationType[];
   additionalInfo: string;
+  desiredPositionInfo: DesiredPositionType;
   changeMainInfo: (data: MainInfoType) => void;
   changeAdditionalInfo: (text: string) => void;
   changeEducations: (data: EducationType[]) => void;
   changeEducationInfo: (data: EducationType) => void;
+  changeDesiredPositionInfo: (data: DesiredPositionType) => void;
   addEducationBlock: () => void;
 };
 
@@ -24,11 +30,7 @@ const initialValue: MainInfoType = {
   phoneNumber: "+374 (93) 550242",
   email: "tigrankochinyan24@gmail.com",
   country: "Armenia",
-  busyness: "Ready to move, ready for business trips",
-  desiredPosition: "Frontend developer",
   businessDetails: "full-time, part-time, project work",
-  // specializations: "Frontend Developer, Software engineer, Full-stack Developer",
-  // workSchedule: "full-time, flexible schedule, remote work",
 };
 
 const initialEducation: EducationType[] = [
@@ -41,6 +43,14 @@ const initialEducation: EducationType[] = [
   },
 ];
 
+const desiredPositionInitialInfo: DesiredPositionType = {
+  desiredPosition: "Frontend developer",
+  busyness: "Ready to move, ready for business trips",
+  specializations:
+    "Frontend Developer, Software engineer, Full-stack Developer",
+  workSchedule: "full-time, flexible schedule, remote work",
+};
+
 const userInitialAdditionalInfo =
   "I am an enterprising and purposeful frontend developer with a strong technical base and team interaction skills. I am constantly striving for self-development, open to new technologies and approaches. Attention to detail, cleanliness and structure of the code are important to me, as well as high-quality execution of tasks on time. I easily adapt to changes and also maintain healthy communication in the team.";
 
@@ -50,6 +60,8 @@ export const UserInfoContextProvider: FC<PropsWithChildren> = ({
   children,
 }) => {
   const [mainInfo, setMainInfo] = useState<MainInfoType>(() => initialValue);
+  const [desiredPositionInfo, setDesiredPositionInfo] =
+    useState<DesiredPositionType>(() => desiredPositionInitialInfo);
   const [linkedinProfileLink, setLinkedinProfileLink] = useState("");
   const [githubProfileLink, setGithubProfileLink] = useState("");
   const [skills, setSkills] = useState<string[]>([]);
@@ -62,14 +74,6 @@ export const UserInfoContextProvider: FC<PropsWithChildren> = ({
   const changeMainInfo = (data: MainInfoType) => {
     setMainInfo(data);
   };
-
-  // const changeAdditionalInfo = ({
-  //   linkedinProfileLink: linkedinLink,
-  //   githubProfileLink: githubLink,
-  // }: AdditionalInfo) => {
-  //   if (githubLink !== undefined) setGithubProfileLink(githubLink);
-  //   if (linkedinLink !== undefined) setGithubProfileLink(linkedinLink);
-  // };
 
   const changeEducations = (data: EducationType[]) => {
     setEducations(data);
@@ -103,17 +107,23 @@ export const UserInfoContextProvider: FC<PropsWithChildren> = ({
     setEducations([...educations, newBlock]);
   };
 
+  const changeDesiredPositionInfo = (info: DesiredPositionType) => {
+    setDesiredPositionInfo(info);
+  };
+
   return (
     <UserInfoContext.Provider
       value={{
         mainInfo,
         linkedinProfileLink,
         githubProfileLink,
+        desiredPositionInfo,
         changeMainInfo,
         changeAdditionalInfo,
         changeEducations,
         addEducationBlock,
         changeEducationInfo,
+        changeDesiredPositionInfo,
         additionalInfo,
         skills,
         educations,

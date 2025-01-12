@@ -5,6 +5,7 @@ import { SocialMediaForm } from "./SocialMediaForm";
 import styles from "./styles.module.scss";
 import { EducationsForm } from "./EducationForm";
 import { AdditionalInfoForm } from "./AdditionalInfoForm/AdditionalInfoForm";
+import { DesiredPositionForm } from "./DesiredPositionForm/DesiredPositionForm";
 
 export const Editor: FC = () => {
   return (
@@ -12,6 +13,7 @@ export const Editor: FC = () => {
       <MainInfoForm />
       <SocialMediaForm />
       <CustomTextArea />
+      <DesiredPositionForm />
 
       <AdditionalInfoForm additionalInfo="sadas" />
 

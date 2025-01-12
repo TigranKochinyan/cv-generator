@@ -7,7 +7,6 @@ export type ExperienceType = {
 };
 
 export type MainInfoType = {
-  desiredPosition: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -16,7 +15,6 @@ export type MainInfoType = {
   city?: string;
   birthDate?: string;
   businessDetails?: string;
-  busyness?: string;
 };
 
 export type AdditionalInfo = {
@@ -31,3 +29,10 @@ export type EducationType = {
   date: string;
   university: string;
 };
+
+export type DesiredPositionType = {
+  desiredPosition: string;
+  busyness: string;
+  specializations: string,
+  workSchedule: string,
+}

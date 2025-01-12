@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Text, View, StyleSheet } from "@react-pdf/renderer";
+import { DesiredPositionType } from "../../../common/types";
 
 // Create styles
 const styles = StyleSheet.create({
@@ -8,7 +9,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     backgroundColor: "#ffffff",
   },
-  name: {
+  name: u
     fontSize: 26,
   },
   age: {
@@ -84,47 +85,30 @@ const styles = StyleSheet.create({
   },
 });
 
-type MainInfoProps = {
-  name: string;
-  surName: string;
-  birthDate: string;
-  phone: string;
-  email: string;
-  location: string;
-  country: string;
-  city: string;
-  businessDetails: string;
-};
+type DesiredPositionBlockProps = DesiredPositionType;
 
 // Create Document Component
-export const MainInfo: FC<MainInfoProps> = ({
-  name,
-  surName,
-  birthDate,
-  businessDetails,
-  city,
-  country,
-  email,
-  location,
-  phone,
+export const DesiredPositionBlock: FC<DesiredPositionBlockProps> = ({
+  busyness,
+  desiredPosition,
+  specializations,
+  workSchedule,
 }) => {
   return (
     <View>
-      <View style={styles.heading}>
-        <Text style={styles.name}>
-          {surName} {name}
-        </Text>
-        <Text style={styles.age}>Male, born on {birthDate}</Text>
-
-        <View style={styles.contacts}>
-          <Text style={styles.contactText}>{phone}</Text>
-          <Text style={styles.contactText}>{email}</Text>
-        </View>
-
-        <View style={styles.contacts}>
-          <Text style={styles.contactText}>Location: {location}</Text>
-          <Text style={styles.contactText}>Citizenship: {country}</Text>
-          <Text style={styles.contactText}>{businessDetails}</Text>
+      <View style={styles.positionBox}>
+        <Text style={styles.title}>Desired position</Text>
+        <View style={styles.ml}>
+          <Text style={styles.subTitle}>{desiredPosition}</Text>
+          <Text style={styles.specInfoText}>
+            Specializations: {specializations}
+          </Text>
+          <Text style={styles.specInfoText} wrap>
+            Busyness: {busyness}
+          </Text>
+          <Text style={styles.specInfoText} wrap>
+            Work schedule: {workSchedule}
+          </Text>
         </View>
       </View>
     </View>
