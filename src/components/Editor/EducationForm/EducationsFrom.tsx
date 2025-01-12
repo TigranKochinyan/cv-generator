@@ -3,22 +3,6 @@ import { UserInfoContext } from "../../../context/UserInfoContext";
 import { EducationForm } from "./EducationForm";
 import { Accordion } from "../../Accordion";
 
-const items = [
-  {
-    title: "Accordion Item 1",
-    content:
-      "This is the content for accordion item 1. This is the content for accordion item 1.  This is the content for accordion item 1.  This is the content for accordion item 1. ",
-  },
-  {
-    title: "Accordion Item 2",
-    content: "This is the content for accordion item 2.",
-  },
-  {
-    title: "Accordion Item 3",
-    content: "This is the content for accordion item 3.",
-  },
-];
-
 export const EducationsForm: FC = () => {
   const userInfo = useContext(UserInfoContext);
 
@@ -26,7 +10,6 @@ export const EducationsForm: FC = () => {
 
   const handleAddBlock = () => {
     userInfo?.addEducationBlock();
-    console.log("educations:", educations);
   };
 
   const eduItems = useMemo(() => {
@@ -39,14 +22,18 @@ export const EducationsForm: FC = () => {
   }, [educations?.length]);
 
   return (
-    <div className="p-4">
-      <button
-        type="button"
-        onClick={handleAddBlock}
-        className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-      >
-        Add Education Block
-      </button>
+    <div className="px-4 mt-10">
+      <div className="w-full flex items-center justify-between">
+        <p className="text-xl">Education</p>
+
+        <button
+          type="button"
+          onClick={handleAddBlock}
+          className="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800"
+        >
+          Add Education Block
+        </button>
+      </div>
 
       <Accordion items={eduItems} />
     </div>

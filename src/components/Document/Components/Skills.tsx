@@ -27,16 +27,13 @@ const styles = StyleSheet.create({
   rightSideSkills: {
     width: "70%",
     flexGrow: 1,
-    flexWrap: 'wrap',
-    flexDirection: 'row',
+    flexWrap: "wrap",
+    flexDirection: "row",
     marginHorizontal: 2,
-    display: 'flex'
+    display: "flex",
   },
   description: {
     color: "#999999",
-  },
-  contentTitle: {
-    fontSize: 20,
   },
   contentText: {
     fontSize: 14,
@@ -46,19 +43,19 @@ const styles = StyleSheet.create({
     padding: 4,
     borderRadius: 2,
     fontSize: 14,
-    backgroundColor: '#999999'
-  }
+    backgroundColor: "#999999",
+  },
 });
 
 type LanguageSkill = {
   language: string;
-  text: string; 
-}
+  text: string;
+};
 
 type SkillsProps = {
   title?: string;
-  languages:LanguageSkill[];
-  skills: string[]
+  languages: LanguageSkill[];
+  skills: string[];
 };
 
 // Create Document Component
@@ -71,8 +68,10 @@ export const Skills: FC<SkillsProps> = ({ title, languages, skills }) => (
         <Text style={styles.description}>Languages</Text>
       </View>
       <View style={styles.rightSide}>
-        {languages.map(item => (
-          <Text key={item.language} style={styles.contentText}>{item.language} {item.text}</Text>
+        {languages.map((item) => (
+          <Text key={item.language} style={styles.contentText}>
+            {item.language} {item.text}
+          </Text>
         ))}
       </View>
     </View>
@@ -82,8 +81,10 @@ export const Skills: FC<SkillsProps> = ({ title, languages, skills }) => (
         <Text style={styles.description}>Skills</Text>
       </View>
       <View wrap style={styles.rightSideSkills}>
-        {skills.map(skill => (
-          <Text key={skill} style={styles.skill}>{skill}</Text>
+        {skills.map((skill) => (
+          <Text key={skill} style={styles.skill}>
+            {skill}
+          </Text>
         ))}
       </View>
     </View>

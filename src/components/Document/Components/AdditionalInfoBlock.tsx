@@ -11,9 +11,6 @@ const styles = StyleSheet.create({
     borderBottom: "0.5px solid #999999",
     marginBottom: 8,
   },
-  blockSubTitle: {
-    fontSize: 16,
-  },
   content: {
     display: "flex",
     flexDirection: "row",
@@ -30,9 +27,6 @@ const styles = StyleSheet.create({
   description: {
     color: "#999999",
   },
-  contentTitle: {
-    fontSize: 16,
-  },
   contentText: {
     fontSize: 14,
   },
@@ -48,7 +42,6 @@ export const AdditionalInfoBlock: FC<AdditionalInfoBlockProps> = ({
 }) => (
   <View style={styles.block}>
     <Text style={styles.blockTitle}>Additional Information</Text>
-    {/* {subTitle && <Text style={styles.blockSubTitle}>{subTitle}</Text>} */}
 
     <View style={styles.content}>
       <View style={styles.leftSide}>

@@ -30,11 +30,11 @@ export const DesiredPositionForm: FC<DesiredPositionFormProps> = ({
   }, []);
 
   return (
-    <div className="ml-5 p-5 mt-5 border-2 border-indigo-300 rounded-xl">
+    <div className="px-5">
       <form
         action="submit"
         onSubmit={handleSubmit(onSubmit)}
-        className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6"
+        className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 p-5 border-2 border-indigo-300 rounded-xl"
       >
         <div className="sm:col-span-3">
           <label

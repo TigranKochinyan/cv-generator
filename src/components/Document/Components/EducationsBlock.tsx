@@ -44,9 +44,6 @@ type EducationsBlockProps = {
 };
 
 export const EducationsBlock: FC<EducationsBlockProps> = ({ educations }) => {
-
-  console.log('change:::EducationBlock');
-
   return (
     <View style={styles.block}>
       <Text style={styles.blockTitle}>Education</Text>

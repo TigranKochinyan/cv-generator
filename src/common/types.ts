@@ -33,6 +33,6 @@ export type EducationType = {
 export type DesiredPositionType = {
   desiredPosition: string;
   busyness: string;
-  specializations: string,
-  workSchedule: string,
-}
+  specializations: string;
+  workSchedule: string;
+};

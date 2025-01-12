@@ -13,32 +13,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     flexWrap: "wrap",
   },
-  positionBox: {
-    marginHorizontal: 20,
-  },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1,
-  },
-  title: {
-    color: "#999999",
-    borderBottom: "0.5px solid #999999",
-    fontSize: 16,
-    // marginBottom: 8,
-  },
-  subTitle: {
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-  specInfoText: {
-    fontSize: 14,
-  },
-  ml: {
-    fontSize: 14,
-    marginTop: 5,
-    marginBottom: 10,
-  },
   flex: {
     display: "flex",
     flexDirection: "row",
@@ -59,11 +33,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginLeft: 4,
   },
-  section2: {
-    marginTop: 10,
-    padding: 10,
-    backgroundColor: "#909090",
-  },
   basicText: {
     fontWeight: "light",
     fontSize: 12,
@@ -72,11 +41,14 @@ const styles = StyleSheet.create({
 
 type ExperienceProps = {
   experiences: ExperienceType[];
-	experienceTime: string
+  experienceTime: string;
 };
 
 // Create Document Component
-export const Experience: FC<ExperienceProps> = ({ experiences, experienceTime }) => (
+export const Experience: FC<ExperienceProps> = ({
+  experiences,
+  experienceTime,
+}) => (
   <View style={styles.box}>
     <Text style={styles.blockTitle}>Work experience — {experienceTime}</Text>
     {experiences.map((experience) => (

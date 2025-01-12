@@ -108,7 +108,6 @@ const infoBlockTwo = {
 };
 
 type DocumentProps = {
-  title?: string;
   mainInfo: MainInfoType;
   educations?: EducationType[];
   additionalInfo?: string;
@@ -117,7 +116,6 @@ type DocumentProps = {
 
 // Create Document Component
 export const MyDocument: FC<DocumentProps> = ({
-  title,
   mainInfo,
   educations,
   additionalInfo = "",

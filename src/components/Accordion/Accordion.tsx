@@ -1,12 +1,12 @@
 import { FC, useState, ReactNode } from "react";
 
 type AccordionItem = {
-    title: string;
-    content: ReactNode;
-}
+  title: string;
+  content: ReactNode;
+};
 
 type AccordionProps = {
-  items: AccordionItem[]
+  items: AccordionItem[];
 };
 
 export const Accordion: FC<AccordionProps> = ({ items }) => {
@@ -17,7 +17,7 @@ export const Accordion: FC<AccordionProps> = ({ items }) => {
   };
 
   return (
-    <div className="max-w-lg mt-10 space-y-4">
+    <div className="w-full mt-10 space-y-4">
       {items.map((item, index) => (
         <div key={item.title + index} className="border rounded-lg">
           <button

@@ -3,11 +3,6 @@ import { Text, View, StyleSheet } from "@react-pdf/renderer";
 
 // Create styles
 const styles = StyleSheet.create({
-  page: {
-    marginTop: 30,
-    marginBottom: 30,
-    backgroundColor: "#ffffff",
-  },
   name: {
     fontSize: 26,
   },
@@ -22,65 +17,6 @@ const styles = StyleSheet.create({
   },
   heading: {
     margin: 20,
-  },
-  blockTitle: {
-    fontSize: 16,
-    borderBottom: "0.5px solid #999999",
-  },
-  box: {
-    marginTop: 5,
-    marginHorizontal: 20,
-    flexWrap: "wrap",
-  },
-  positionBox: {
-    marginHorizontal: 20,
-  },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1,
-  },
-  title: {
-    color: "#999999",
-    borderBottom: "0.5px solid #999999",
-    fontSize: 16,
-  },
-  subTitle: {
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-  specInfoText: {
-    fontSize: 14,
-  },
-  ml: {
-    fontSize: 14,
-    marginTop: 5,
-    marginBottom: 10,
-  },
-  flex: {
-    display: "flex",
-    flexDirection: "row",
-    gap: 10,
-    marginTop: 5,
-  },
-  leftSide: {
-    flexGrow: 1,
-    width: "25%",
-  },
-  leftText: {
-    fontSize: 14,
-  },
-  rightSide: {
-    width: "70%",
-  },
-  rightTitle: {
-    fontSize: 14,
-    marginLeft: 4,
-  },
-  section2: {
-    marginTop: 10,
-    padding: 10,
-    backgroundColor: "#909090",
   },
 });
 

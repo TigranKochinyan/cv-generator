@@ -2,20 +2,12 @@ import { FC, useContext, useEffect } from "react";
 import { UserInfoContext } from "../../../context/UserInfoContext";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-type AdditionalInfoFormProps = {
-  additionalInfo: string;
-};
-
 type IFormInput = {
   text: string;
 };
 
-export const AdditionalInfoForm: FC<AdditionalInfoFormProps> = ({
-  additionalInfo,
-}) => {
+export const AdditionalInfoForm: FC = () => {
   const userInfo = useContext(UserInfoContext);
-
-  console.log(userInfo);
 
   const { register, handleSubmit, reset } = useForm<IFormInput>();
 
@@ -28,8 +20,8 @@ export const AdditionalInfoForm: FC<AdditionalInfoFormProps> = ({
   }, []);
 
   return (
-    <div className="ml-5 p-5 mt-5 border-2 border-indigo-300 rounded-xl">
-      <form action="submit" onSubmit={handleSubmit(onSubmit)}>
+    <div className="px-5">
+      <form action="submit" onSubmit={handleSubmit(onSubmit)} className="p-5 mt-5 border-2 border-indigo-300 rounded-xl">
         <label
           htmlFor="additionalInfoInput"
           className="block mb-2 text-sm font-medium text-gray-900"
@@ -46,7 +38,7 @@ export const AdditionalInfoForm: FC<AdditionalInfoFormProps> = ({
 
         <button
           type="submit"
-          className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          className="mt-10 flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
         >
           Save
         </button>
