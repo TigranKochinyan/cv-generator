@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC, useContext, useEffect } from "react";
 import { PDFViewer } from "@react-pdf/renderer";
 
 import styles from "./styles.module.scss";
@@ -7,6 +7,11 @@ import { UserInfoContext } from "../../context/UserInfoContext";
 
 export const Viewer: FC = () => {
   const userInfo = useContext(UserInfoContext);
+
+  useEffect(() => {
+    console.log('Viewer effect', userInfo?.mainInfo);
+    
+  }, [userInfo?.mainInfo])
 
   if (!userInfo) {
     return null;
@@ -20,6 +25,8 @@ export const Viewer: FC = () => {
           educations={userInfo.educations}
           additionalInfo={userInfo.additionalInfo}
           desiredPositionInfo={userInfo.desiredPositionInfo}
+          skills={userInfo.skills}
+          languages={userInfo.languages}
         />
       </PDFViewer>
     </div>

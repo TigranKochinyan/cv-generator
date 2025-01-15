@@ -54,7 +54,7 @@ type LanguageSkill = {
 
 type SkillsProps = {
   title?: string;
-  languages: LanguageSkill[];
+  languages: string[];
   skills: string[];
 };
 
@@ -68,9 +68,9 @@ export const Skills: FC<SkillsProps> = ({ title, languages, skills }) => (
         <Text style={styles.description}>Languages</Text>
       </View>
       <View style={styles.rightSide}>
-        {languages.map((item) => (
-          <Text key={item.language} style={styles.contentText}>
-            {item.language} {item.text}
+        {languages.map((language) => (
+          <Text key={language} style={styles.contentText}>
+            {language.trim()}
           </Text>
         ))}
       </View>
@@ -83,7 +83,7 @@ export const Skills: FC<SkillsProps> = ({ title, languages, skills }) => (
       <View wrap style={styles.rightSideSkills}>
         {skills.map((skill) => (
           <Text key={skill} style={styles.skill}>
-            {skill}
+            {skill.trim()}
           </Text>
         ))}
       </View>

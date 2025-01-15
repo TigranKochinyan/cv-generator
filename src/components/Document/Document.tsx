@@ -112,6 +112,8 @@ type DocumentProps = {
   educations?: EducationType[];
   additionalInfo?: string;
   desiredPositionInfo: DesiredPositionType;
+  skills: string[];
+  languages: string[];
 };
 
 // Create Document Component
@@ -120,6 +122,8 @@ export const MyDocument: FC<DocumentProps> = ({
   educations,
   additionalInfo = "",
   desiredPositionInfo,
+  skills,
+  languages,
 }) => {
   return (
     <Document>
@@ -149,12 +153,8 @@ export const MyDocument: FC<DocumentProps> = ({
 
         <Skills
           title="Skills"
-          languages={[
-            { language: "Armenian", text: "— Native" },
-            { language: "English", text: "— B1" },
-            { language: "Russian", text: "— C2" },
-          ]}
-          skills={skillsTest}
+          languages={languages}
+          skills={skills}
         />
 
         <AdditionalInfoBlock additionalInfo={additionalInfo} />

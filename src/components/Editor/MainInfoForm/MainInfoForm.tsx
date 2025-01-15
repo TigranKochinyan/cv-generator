@@ -10,7 +10,11 @@ export const MainInfoForm: FC = () => {
 
   const { register, handleSubmit, reset } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    console.log('userInfo', userInfo);
+    console.log('Main info form data', data);
+    
     userInfo?.changeMainInfo(data);
+    
   };
 
   useEffect(() => {
