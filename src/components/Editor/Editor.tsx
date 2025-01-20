@@ -8,6 +8,8 @@ import { DesiredPositionForm } from "./DesiredPositionForm";
 import { SkillsAndLanguagesForm } from "./SkillsAndLanguagesForm";
 import styles from "./styles.module.scss";
 import { LanguagesForm } from "./LangagesForm";
+import { ExperienceForm } from "./ExperiencesForms/ExperienceForm";
+import { ExperiencesForms } from "./ExperiencesForms";
 
 export const Editor: FC = () => {
   return (
@@ -20,6 +22,7 @@ export const Editor: FC = () => {
       <EducationsForm />
       <LanguagesForm />
       <SkillsAndLanguagesForm />
+      <ExperiencesForms  />
     </div>
   );
 };

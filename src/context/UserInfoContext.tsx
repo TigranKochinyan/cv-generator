@@ -9,12 +9,14 @@ import {
 import {
   DesiredPositionType,
   EducationType,
+  ExperienceType,
   MainInfoType,
 } from "../common/types";
 import { generateId } from "../common/utils";
 import {
   INITIAL_DESIRED_POSITION_INFO,
   INITIAL_EDUCATION_INFO,
+  INITIAL_EXPERIENCES,
   INITIAL_LANGUAGES_INFO,
   INITIAL_MAIN_INFO,
   INITIAL_SKILLS,
@@ -30,14 +32,18 @@ export type UserInfoContextType = {
   additionalInfo: string;
   desiredPositionInfo: DesiredPositionType;
   languages: string[];
+  experiences: ExperienceType[];
   changeMainInfo: (data: MainInfoType) => void;
   changeAdditionalInfo: (text: string) => void;
   changeEducations: (data: EducationType[]) => void;
   changeEducationInfo: (data: EducationType) => void;
+  changeExperienceInfo: (data: ExperienceType) => void;
   changeDesiredPositionInfo: (data: DesiredPositionType) => void;
   addEducationBlock: () => void;
+  addExperienceBlock: () => void;
   changeSkills: (data: string[]) => void;
   changeLanguages: (data: string[]) => void;
+  changeExperiences: (data: ExperienceType[]) => void;
 };
 
 export const UserInfoContext = createContext<UserInfoContextType | null>(null);
@@ -61,6 +67,9 @@ export const UserInfoContextProvider: FC<PropsWithChildren> = ({
   );
   const [languages, setLanguages] = useState<string[]>(
     () => INITIAL_LANGUAGES_INFO
+  );
+  const [experiences, setExperiences] = useState<ExperienceType[]>(
+    () => INITIAL_EXPERIENCES
   );
 
   const changeMainInfo = useCallback(
@@ -99,6 +108,28 @@ export const UserInfoContextProvider: FC<PropsWithChildren> = ({
     [setEducations]
   );
 
+  const changeExperienceInfo = useCallback(
+    (data: ExperienceType) => {
+      const updatedExperience: ExperienceType[] = experiences.map((item) => {
+        if (item.id === data.id) {
+          return data;
+        } else {
+          return item;
+        }
+      });
+
+      setExperiences(updatedExperience);
+    },
+    [setEducations]
+  );
+
+  const changeExperiences = useCallback(
+    (data: ExperienceType[]) => {
+      setExperiences(data);
+    },
+    [setExperiences]
+  );
+
   const addEducationBlock = useCallback(() => {
     const newBlock: EducationType = {
       date: "",
@@ -110,6 +141,19 @@ export const UserInfoContextProvider: FC<PropsWithChildren> = ({
 
     setEducations([...educations, newBlock]);
   }, [setEducations]);
+
+  const addExperienceBlock = useCallback(() => {
+    const newBlock: ExperienceType = {
+      date: "",
+      id: generateId(),
+      cases: [],
+      company: `Company ${educations.length + 1}`,
+      period: '',
+      position: ''
+    };
+
+    setExperiences([...experiences, newBlock]);
+  }, [setExperiences]);
 
   const changeDesiredPositionInfo = useCallback(
     (info: DesiredPositionType) => {
@@ -142,14 +186,18 @@ export const UserInfoContextProvider: FC<PropsWithChildren> = ({
       additionalInfo,
       desiredPositionInfo,
       languages,
+      experiences,
       changeMainInfo,
       changeAdditionalInfo,
       changeEducations,
       changeEducationInfo,
+      changeExperienceInfo,
       changeDesiredPositionInfo,
       addEducationBlock,
+      addExperienceBlock,
       changeSkills,
       changeLanguages,
+      changeExperiences
     };
   }, [
     mainInfo,
@@ -160,14 +208,18 @@ export const UserInfoContextProvider: FC<PropsWithChildren> = ({
     additionalInfo,
     desiredPositionInfo,
     languages,
+    experiences,
     changeMainInfo,
     changeAdditionalInfo,
     changeEducations,
     changeEducationInfo,
+    changeExperienceInfo,
     changeDesiredPositionInfo,
     addEducationBlock,
+    addExperienceBlock,
     changeSkills,
     changeLanguages,
+    changeExperiences
   ]);
 
   return (

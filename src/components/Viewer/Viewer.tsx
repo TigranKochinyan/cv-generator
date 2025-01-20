@@ -9,9 +9,9 @@ export const Viewer: FC = () => {
   const userInfo = useContext(UserInfoContext);
 
   useEffect(() => {
-    console.log('Viewer effect', userInfo?.mainInfo);
+    console.log('Viewer effect', userInfo?.experiences);
     
-  }, [userInfo?.mainInfo])
+  }, [userInfo])
 
   if (!userInfo) {
     return null;
@@ -27,6 +27,7 @@ export const Viewer: FC = () => {
           desiredPositionInfo={userInfo.desiredPositionInfo}
           skills={userInfo.skills}
           languages={userInfo.languages}
+          experiences={userInfo.experiences}
         />
       </PDFViewer>
     </div>
